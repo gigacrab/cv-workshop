@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -15,7 +14,6 @@ while True:
 
     # scaleFactor - scale pyramid for reducing image size to match model's size
     # minNeighbors - how many neighbors each candidate rectangle should have to retain it
-
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
