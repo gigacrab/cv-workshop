@@ -2,8 +2,6 @@ import cv2
 import numpy as np
 from keras.models import load_model
 
-np.set_printoptions(suppress=True)
-
 cap = cv2.VideoCapture(0)
 
 model = load_model("model/keras_model.h5", compile=False)
@@ -20,17 +18,27 @@ while True:
     x = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     x = cv2.resize(x, (224, 224), interpolation=cv2.INTER_AREA).astype(np.float32)
     x = np.expand_dims(x, axis=0)
+
+    # Normalizing -1 to 1 / preprocess_input(x)
     x = (x / 127.5) - 1
     preds = model.predict(x)
 
+    print(preds)
+
+    # Returns indices of the maximum value
     index = np.argmax(preds)
     class_name = class_names[index]
+
+    # Nested list
     confidence_score = preds[0][index]
     text = f"{class_name[2:-1]}: {np.round(confidence_score*100)}"
 
+    # img, text, bottom left, font, scaling, color, thickness
     cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
 
     cv2.imshow("Camera", frame)
+
+    # ESC key
     if cv2.waitKey(1) == 27:
         break
 
