@@ -4,9 +4,9 @@ from keras.models import load_model
 
 cap = cv2.VideoCapture(0)
 
-model = load_model("model/keras_model.h5", compile=False)
+model = load_model("tm-model/keras_model.h5", compile=False)
 
-class_names = open("model/labels.txt", "r").readlines()
+class_names = open("tm-model/labels.txt", "r").readlines()
 
 while True:
     ret, frame = cap.read()
@@ -23,13 +23,14 @@ while True:
     x = (x / 127.5) - 1
     preds = model.predict(x)
 
+    # Log results
     print(preds)
 
     # Returns indices of the maximum value
     index = np.argmax(preds)
     class_name = class_names[index]
 
-    # Nested list
+    # Print output
     confidence_score = preds[0][index]
     text = f"{class_name[2:-1]}: {np.round(confidence_score*100)}"
 
