@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLOWorld
 
-model = YOLOWorld("yolov8x-worldv2.pt")
+model = YOLOWorld("yolov8s-worldv2.pt")
 
 classes = ["tennis ball", "tennis racket", "person", "tennis net"]
 model.set_classes(classes)
