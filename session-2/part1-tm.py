@@ -4,9 +4,9 @@ from keras.models import load_model
 
 cap = cv2.VideoCapture(0)
 
-model = load_model("tm-model/keras_model.h5", compile=False)
+model = load_model("./models/tm/keras_model.h5", compile=False)
 
-class_names = open("tm-model/labels.txt", "r").readlines()
+class_names = open("./models/tm/labels.txt", "r").readlines()
 
 while True:
     ret, frame = cap.read()

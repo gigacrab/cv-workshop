@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 import cv2
-model = YOLO("yolov8n-pose.pt")
-cap = cv2.VideoCapture("fall.mp4")
+model = YOLO("./models/yolov8n-pose.pt")
+cap = cv2.VideoCapture("./assets/fall.mp4")
 #set size of camera 3=width 4 =height
 #https://www.youtube.com/watch?v=YKbBXWBJloY
 

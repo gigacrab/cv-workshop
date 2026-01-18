@@ -1,17 +1,17 @@
 from ultralytics import YOLO
 import cv2
 #0 for computer webcame
-cap = cv2.VideoCapture("cars.mp4")
+cap = cv2.VideoCapture("./assets/cars.mp4")
 #set size of camera 3=width 4 =height we set it as this because later when we create mask we also create 1280 and 720
 cap.set(3,1280)
 cap.set(4,720)
 #use canva to find out where the line should be
 liney=416
 
-model = YOLO('./YoloWeights/yolov8n.pt')
+model = YOLO('./models/yolov8n.pt')
 #use a mask to only allow detection for specific area
 #mask is created using canva
-mask=cv2.imread("MaskForYolo.png")
+mask=cv2.imread("./assets/MaskForYolo.png")
 countcar =0
 #use to store detections id for counting to prevent doublecounting
 #the way we count is if car center point is in the area of the line then we count it
