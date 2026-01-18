@@ -8,7 +8,7 @@ cap.set(4,720)
 #use canva to find out where the line should be
 liney=416
 
-model = YOLO('../YoloWeights/yolov8n.pt')
+model = YOLO('./YoloWeights/yolov8n.pt')
 #use a mask to only allow detection for specific area
 #mask is created using canva
 mask=cv2.imread("MaskForYolo.png")
