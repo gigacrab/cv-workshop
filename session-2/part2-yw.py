@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 from ultralytics import YOLOWorld
 
-model = YOLOWorld("yolov8s-worldv2.pt")
+model = YOLOWorld("./models/yolov8s-worldv2.pt")
 
 classes = ["tennis ball", "tennis racket", "person", "tennis net"]
 model.set_classes(classes)
 
-cap = cv2.VideoCapture("wii-sports.mp4")
+cap = cv2.VideoCapture("./assets/wii-sports.mp4")
 
 # To use device camera
 # cap = cv2.VideoCapture(0)
