@@ -8,6 +8,10 @@ while True:
     # frame - NumPy array representing image
     ret, frame = cap.read()
 
+    if not ret:
+        print("Video capture failed")
+        break
+
     # simple image processing, convert to a gray image from BGR
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -18,7 +22,7 @@ while True:
     if cv2.waitKey(1) == 27:
         break
 
-# releases video capture
+# releases video capture, freeing hardware resources
 cap.release()
 
 # close GUI windows
